@@ -10,10 +10,12 @@ services:
       timeout: 5s
       retries: 10
     restart: unless-stopped
+    networks:
+      - fcg
 
   users-api:
     build:
-      context: ./users-api
+      context: ../users-api
       dockerfile: Dockerfile
     depends_on:
       rabbitmq:
@@ -39,10 +41,12 @@ services:
     ports:
       - "5001:8080"
     restart: unless-stopped
+    networks:
+      - fcg
 
   catalog-api:
     build:
-      context: ./catalog-api
+      context: ../catalog-api
       dockerfile: Dockerfile
     depends_on:
       rabbitmq:
@@ -63,10 +67,12 @@ services:
     ports:
       - "5003:8080"
     restart: unless-stopped
+    networks:
+      - fcg
 
   payments-api:
     build:
-      context: ./payments-api
+      context: ../payments-api
       dockerfile: Dockerfile
     depends_on:
       rabbitmq:
@@ -82,10 +88,12 @@ services:
     ports:
       - "5004:8080"
     restart: unless-stopped
+    networks:
+      - fcg
 
   notifications-api:
     build:
-      context: ./notifications-api
+      context: ../notifications-api
       dockerfile: Dockerfile
     depends_on:
       rabbitmq:
@@ -101,7 +109,13 @@ services:
     ports:
       - "5002:8080"
     restart: unless-stopped
+    networks:
+      - fcg
 
 volumes:
   users_data:
   catalog_data:
+
+networks:
+  fcg:
+    driver: bridge

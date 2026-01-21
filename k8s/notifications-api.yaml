@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notifications-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notifications-api
+  template:
+    metadata:
+      labels:
+        app: notifications-api
+    spec:
+      containers:
+        - name: notifications-api
+          image: fcg-fase2-notifications-api:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              valueFrom:
+                configMapKeyRef:
+                  name: fcg-fase2-config
+                  key: ASPNETCORE_ENVIRONMENT
+
+            # RabbitMQ
+            - name: RabbitMq__Host
+              valueFrom:
+                configMapKeyRef:
+                  name: fcg-fase2-config
+                  key: RABBITMQ_HOST
+            - name: RabbitMq__VirtualHost
+              valueFrom:
+                configMapKeyRef:
+                  name: fcg-fase2-config
+                  key: RABBITMQ_VHOST
+            - name: RabbitMq__Username
+              valueFrom:
+                secretKeyRef:
+                  name: fcg-fase2-secrets
+                  key: RABBITMQ_USERNAME
+            - name: RabbitMq__Password
+              valueFrom:
+                secretKeyRef:
+                  name: fcg-fase2-secrets
+                  key: RABBITMQ_PASSWORD
+
+            # Filas
+            - name: Queues__UserCreated
+              valueFrom:
+                configMapKeyRef:
+                  name: fcg-fase2-config
+                  key: QUEUE_USER_CREATED
+            - name: Queues__PaymentProcessedNotifications
+              valueFrom:
+                configMapKeyRef:
+                  name: fcg-fase2-config
+                  key: QUEUE_PAYMENT_PROCESSED_NOTIFICATIONS
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: notifications-api
+spec:
+  selector:
+    app: notifications-api
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+  type: ClusterIP

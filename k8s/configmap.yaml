@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fcg-fase2-config
+data:
+  ASPNETCORE_ENVIRONMENT: "Production"
+
+  # RabbitMQ (não sensível)
+  RABBITMQ_HOST: "rabbitmq"
+  RABBITMQ_VHOST: "/"
+
+  # Filas (avaliável pelo professor)
+  QUEUE_USER_CREATED: "user-created-queue"
+  QUEUE_ORDER_PLACED: "order-placed-queue"
+  QUEUE_PAYMENT_PROCESSED_CATALOG: "payment-processed-queue"
+  QUEUE_PAYMENT_PROCESSED_NOTIFICATIONS: "payment-processed-queue-notifications"
+
+  # URLs internas via Service Name (requisito do professor)
+  USERS_API_BASEURL: "http://users-api"
+  CATALOG_API_BASEURL: "http://catalog-api"
+  PAYMENTS_API_BASEURL: "http://payments-api"
+  NOTIFICATIONS_API_BASEURL: "http://notifications-api"

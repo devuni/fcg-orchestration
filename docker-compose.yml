@@ -15,7 +15,7 @@ services:
 
   users-api:
     build:
-      context: ../users-api
+      context: ../fcg-users-api
       dockerfile: Dockerfile
     depends_on:
       rabbitmq:
@@ -46,7 +46,7 @@ services:
 
   catalog-api:
     build:
-      context: ../catalog-api
+      context: ../fcg-catalog-api
       dockerfile: Dockerfile
     depends_on:
       rabbitmq:
@@ -72,7 +72,7 @@ services:
 
   payments-api:
     build:
-      context: ../payments-api
+      context: ../fcg-payments-api
       dockerfile: Dockerfile
     depends_on:
       rabbitmq:
@@ -93,7 +93,7 @@ services:
 
   notifications-api:
     build:
-      context: ../notifications-api
+      context: ../fcg-notifications-api
       dockerfile: Dockerfile
     depends_on:
       rabbitmq:

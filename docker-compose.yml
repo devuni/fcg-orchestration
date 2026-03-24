@@ -24,10 +24,10 @@ services:
       ASPNETCORE_URLS: http://+:8080
 
       # RabbitMQ
-      RabbitMq__Host: rabbitmq
-      RabbitMq__VirtualHost: /
-      RabbitMq__Username: guest
-      RabbitMq__Password: guest
+      RabbitMQ__Host: rabbitmq
+      RabbitMQ__VirtualHost: /
+      RabbitMQ__Username: guest
+      RabbitMQ__Password: guest
 
       # SQLite (SEM mudar código)
       ConnectionStrings__Default: "Data Source=/data/users.db"
@@ -55,10 +55,10 @@ services:
       ASPNETCORE_URLS: http://+:8080
 
       # RabbitMQ
-      RabbitMq__Host: rabbitmq
-      RabbitMq__VirtualHost: /
-      RabbitMq__Username: guest
-      RabbitMq__Password: guest
+      RabbitMQ__Host: rabbitmq
+      RabbitMQ__VirtualHost: /
+      RabbitMQ__Username: guest
+      RabbitMQ__Password: guest
 
       # SQLite (SEM mudar código)
       ConnectionStrings__Default: "Data Source=/data/catalog.db"
@@ -81,10 +81,10 @@ services:
       ASPNETCORE_URLS: http://+:8080
 
       # RabbitMQ
-      RabbitMq__Host: rabbitmq
-      RabbitMq__VirtualHost: /
-      RabbitMq__Username: guest
-      RabbitMq__Password: guest
+      RabbitMQ__Host: rabbitmq
+      RabbitMQ__VirtualHost: /
+      RabbitMQ__Username: guest
+      RabbitMQ__Password: guest
     ports:
       - "5004:8080"
     restart: unless-stopped
@@ -102,10 +102,10 @@ services:
       ASPNETCORE_URLS: http://+:8080
 
       # RabbitMQ
-      RabbitMq__Host: rabbitmq
-      RabbitMq__VirtualHost: /
-      RabbitMq__Username: guest
-      RabbitMq__Password: guest
+      RabbitMQ__Host: rabbitmq
+      RabbitMQ__VirtualHost: /
+      RabbitMQ__Username: guest
+      RabbitMQ__Password: guest
     ports:
       - "5002:8080"
     restart: unless-stopped
